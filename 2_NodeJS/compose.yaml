@@ -3,11 +3,12 @@ version: '3'
 services:
   mysql:
     image: mysql:8.3.0
-    container_name: desafios_mysql
+    container_name: mysql
     restart: always
     tty: true
     volumes:
       - ./_mysql:/var/lib/mysql/
+      - ./scripts:/docker-entrypoint-initdb.d/:ro
     environment:
       - MYSQL_DATABASE=db_desafios
       - MYSQL_ROOT_PASSWORD=root
@@ -15,8 +16,6 @@ services:
       - desafios-network
     ports:
       - "3306:3306"
-    extra_hosts:
-    - "host.docker.internal:host-gateway"
 
 networks:
   desafios-network:
