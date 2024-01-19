@@ -1,0 +1,9 @@
+﻿{
+    "database": {
+        "host": "mysql",
+        "port": 3306,
+        "user": "desafio",
+        "password": "desafio123",
+        "database": "db_desafios"
+    }
+}
