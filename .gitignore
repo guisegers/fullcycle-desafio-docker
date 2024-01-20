@@ -46,18 +46,18 @@ go.work
 *.lock-wscript
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
-*/build/Release
+**/build/Release
 
 # Dependency directories
-*/node_modules
-*/jspm_packages
-*/typings
+**/node_modules
+**/jspm_packages
+**/typings
 
 # Optional npm cache directory
 *.npm
 
 # Optional REPL history
-*/.node_repl_history
+**/.node_repl_history
 
 # MySql Files
-*/_mysql
+**/_mysql

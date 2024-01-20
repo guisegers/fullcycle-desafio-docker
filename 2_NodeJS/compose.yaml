@@ -7,16 +7,32 @@ services:
     restart: always
     tty: true
     volumes:
-      - ./_mysql:/var/lib/mysql/
-      - ./scripts:/docker-entrypoint-initdb.d/:ro
+      - ./db/_mysql:/var/lib/mysql/
+      - ./db/scripts:/docker-entrypoint-initdb.d/:ro
     environment:
       - MYSQL_DATABASE=db_desafios
       - MYSQL_ROOT_PASSWORD=root
     networks:
-      - desafios-network
+      - desafios
     ports:
       - "3306:3306"
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: dockerize -wait tcp://mysql:3306 -timeout 20s /entrypoint.sh
+    container_name: "node"
+    tty: true
+    volumes:
+      - ./app:/usr/src/app
+    networks:
+      - desafios
+    ports: 
+      - "3000:3000"
+    depends_on:
+      - mysql
+
 networks:
-  desafios-network:
+  desafios:
     driver: bridge
