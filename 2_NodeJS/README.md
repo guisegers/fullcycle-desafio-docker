@@ -36,6 +36,9 @@ Ao executar o script 2_insert_people.sql serão criados 2 registros na tabela pe
 
 ## 2.3 Acessando o sistema
 
+Os containeres podem demorar um pouco a funcionar por conta da criação do banco de dados.
+Aguarde uns 2 minutos após iniciar o compose.
+
 Para acessar o sistema pela pagina html, va em http://localhost pelo navegador
 É possível verificar a API node em http://localhost:3000/people
 Execute o comando docker logs --follow node para visualizar os logs da API node
