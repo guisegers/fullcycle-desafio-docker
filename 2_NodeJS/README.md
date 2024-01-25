@@ -2,9 +2,13 @@
 
 Código fonte em https://github.com/guisegers/fullcycle-desafio-docker.git
 
+Todos os comandos devem ser executados da pasta 2_NodeJS.
+
 ## 2.1 Compose
 
-execute o ambiente com docker compose up -d --build
+Execute o ambiente com:
+docker compose up -d --build
+
 Certifique-se de que está no diretório ./fullclycle-desafio-docker/2_NodeJS
 
 ## 2.2 Build
@@ -18,6 +22,17 @@ ghcr.io/guisegers/fullcycle-desafio:docker-nginx
 Dockerhub
 guisegers/fullcycle-desafio:docker-node
 guisegers/fullcycle-desafio:docker-nginx
+
+Não é necessario imagem customizada para o mysql
+
+## 2.3 Mysql
+
+Scripts de inicialização do banco de dados estão na pasta ./db/scripts/
+
+Ao iniciar o container mysql todos os scripts serão executados na ordem alfabetica
+
+Ao executar o script 1_init.sql, serão criados a database, a tabela e o usuario. Além de garantir acesso ao usuario.
+Ao executar o script 2_insert_people.sql serão criados 2 registros na tabela people. Pra facilitar o exemplo.
 
 ## 2.3 Acessando o sistema
 
