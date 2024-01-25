@@ -18,12 +18,13 @@ services:
       - "3306:3306"
 
   app:
+    image: ghcr.io/guisegers/fullcycle-desafio:docker-node
     build:
       context: ./app
       dockerfile: Dockerfile
     entrypoint: dockerize -wait tcp://mysql:3306 -timeout 50s docker-entrypoint.sh
     command: npm run start
-    container_name: "node"
+    container_name: node
     tty: true
     volumes:
       - ./app:/usr/src/app
@@ -36,6 +37,7 @@ services:
       - mysql
   
   nginx:
+    image: ghcr.io/guisegers/fullcycle-desafio:docker-nginx
     build:
       context: ./nginx
       dockerfile: Dockerfile
