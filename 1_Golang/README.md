@@ -2,7 +2,8 @@
 
 ## 1.1 Run
 
-Execute a imagem diretamente com o comando docker run ghcr.io/guisegers/fullcycle-desafio:docker-golang
+Execute a imagem diretamente com o comando:
+docker run ghcr.io/guisegers/fullcycle-desafio:docker-golang
 
 ou
 
