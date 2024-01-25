@@ -34,7 +34,7 @@ Ao iniciar o container mysql todos os scripts serão executados na ordem alfabet
 Ao executar o script 1_init.sql, serão criados a database, a tabela e o usuario. Além de garantir acesso ao usuario.
 Ao executar o script 2_insert_people.sql serão criados 2 registros na tabela people. Pra facilitar o exemplo.
 
-## 2.3 Acessando o sistema
+## 2.4 Verificando logs e acessando o sistema
 
 Os containeres podem demorar um pouco a funcionar por conta da criação do banco de dados.
 Aguarde uns 2 minutos após iniciar o compose.
