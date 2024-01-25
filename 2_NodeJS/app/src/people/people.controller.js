@@ -20,7 +20,10 @@ module.exports = router;
 
 function getAll(req, res, next) {
   peopleService.getAll()
-    .then(users => res.json(users))
+    .then(users => {
+      console.log(users)
+      res.json(users)
+    })
     .catch(next);
 }
 

@@ -2,20 +2,28 @@
 
 ## 2.1 Run
 
-Execute a imagem diretamente com o comando docker run ghcr.io/guisegers/fullcycle-desafio:docker-nodejs
+Para executar as imagens diretamente, terás que executar as 3 imagens na ordem
 
-ou
+1 - Crie a network
+  docker network create desafios
 
-docker run guisegers/fullcycle-desafio:docker-nodejs
+2 - Execute os containers:
 
-O Código fonte do desafio está disponivel na pasta 2_NodeJS
+  2.1 .Mysql
+    docker run -it -d --rm --name mysql -p 3306:3306 --network desafios -v "$(pwd)"/db/_mysql:/var/lib/mysql/ -v "$(pwd)"/db/scripts:/docker-entrypoint-initdb.d/:ro -e MYSQL_DATABASE=db_desafios -e MYSQL_ROOT_PASSWORD=root mysql:8.3.0
+  2.2 Node
+    docker run -d -it --rm --name node -p 3000:3000 --network desafios -v "$(pwd)"/app:/usr/src/app ghcr.io/guisegers/fullcycle-desafio:docker-nodejs
+  2.3 Nginx
+    docker run -d -it --rm --name nginx -p 80:80 --network desafios -v "$(pwd)"/nginx/html:/www/data/html ghcr.io/guisegers/fullcycle-desafio:docker-nginx
+
+ou execute usando o docker compose up -d --build
 
 ## 2.2 Build
 
-Faça o build obtendo o codigo fonte do repositorio https://github.com/guisegers/fullcycle-desafio-docker.git
+Para o Build será necessário o código fonte do repositório: https://github.com/guisegers/fullcycle-desafio-docker.git
+Entre na pasta 2_NodeJS, e faça os builds individuais usando os comandos:
 
-Entre na pasta 2_NodeJS e execute o comando docker build na pasta raiz que tenha o arquivo Dockerfile
-
-docker build -t fullcycle-desafio:docker-nodejs .
+1. Mysql
+  docker bui
 
 [Voltar aos Desafios](../README.md)

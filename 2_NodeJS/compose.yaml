@@ -19,19 +19,36 @@ services:
 
   app:
     build:
-      context: .
+      context: ./app
       dockerfile: Dockerfile
-    entrypoint: dockerize -wait tcp://mysql:3306 -timeout 20s /entrypoint.sh
+    entrypoint: dockerize -wait tcp://mysql:3306 -timeout 50s docker-entrypoint.sh
+    command: npm run start
     container_name: "node"
     tty: true
     volumes:
       - ./app:/usr/src/app
+      - /usr/src/app/node_modules
     networks:
       - desafios
     ports: 
       - "3000:3000"
     depends_on:
       - mysql
+  
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    tty: true
+    volumes:
+      - ./nginx/html:/www/data/html
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    networks:
+      - desafios
 
 networks:
   desafios:

@@ -9,5 +9,7 @@ function model(sequelize) {
     lastName: { type: DataTypes.STRING, allowNull: true },
     nickName: { type: DataTypes.STRING, allowNull: true }
   };
-  return sequelize.define('People', attributes);
+  return sequelize.define('people', attributes, {
+    timestamps: false
+  });
 }

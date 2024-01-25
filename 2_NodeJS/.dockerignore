@@ -1,1 +1,3 @@
-/db
+*/db/_mysql
+*/app/node_modules
+*/app/Dockerfile*
